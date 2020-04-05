@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//Create the "schema" for the person model
 const PersonSchema = mongoose.Schema({
   name: { type: String, required: true },
   age: { type: Number, required: true },

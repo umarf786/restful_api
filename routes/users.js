@@ -1,8 +1,9 @@
+//Import express and setup express router for use
 const express = require('express');
 const router = express.Router();
 const Person = require('../models/Person');
 
-//Add a user
+//Add a user at endpoint /users/add
 router.post('/add', async (req, res) => {
   try {
     const person = new Person({
@@ -25,8 +26,8 @@ router.post('/add', async (req, res) => {
   }
 });
 
-//Delete a user
-router.post('/remove/:id', async (req, res) => {
+//Delete a user at endpoint /users/remove/:id
+router.delete('/remove/:id', async (req, res) => {
   try {
     const del = await Person.findByIdAndDelete(req.params.id);
     res.status(200).json({ success: true });
@@ -35,7 +36,7 @@ router.post('/remove/:id', async (req, res) => {
   }
 });
 
-//Get all users
+//Get all users at endpoint /users
 router.get('/', async (req, res) => {
   try {
     const all = await Person.find();
@@ -45,7 +46,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-//Get one user
+//Get one user at endpoint /users/:id
 router.get('/:id', async (req, res) => {
   try {
     const id = await Person.findById(req.params.id);
@@ -55,7 +56,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//Update a user
+//Update a user at endpoint /users/update/:id
 router.put('/update/:id', async (req, res) => {
   try {
     const update = await Person.findByIdAndUpdate(req.params.id, req.body);
