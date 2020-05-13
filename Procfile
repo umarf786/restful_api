@@ -1,1 +1,1 @@
-worker: node -r dotenv/config ./src/index.js
+worker: nodemon server.js
