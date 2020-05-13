@@ -4,9 +4,11 @@ const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
 const connectDB = require('./config/database');
-
+var cors = require('cors');
+app.use(cors());
 //Parse JSON
 app.use(express.json());
+app.use(express.urlencoded());
 
 //Import routes
 const home = require('./routes/home');
